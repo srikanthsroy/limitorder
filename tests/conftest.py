@@ -3,7 +3,6 @@ import boa
 
 def pytest_configure():
     pytest.ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
-    pytest.WETH = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
 
 @pytest.fixture(scope="session")
 def owner():
