@@ -4,9 +4,13 @@ import boa
 def pytest_configure():
     pytest.ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
 
+# conftest account setup
+OWNER = boa.env.generate_address("owner")
+boa.env.eoa = OWNER
+
 @pytest.fixture(scope="session")
 def owner():
-    return boa.env.generate_address("owner")
+    return OWNER
 
 @pytest.fixture(scope="session")
 def alice():
