@@ -1,7 +1,7 @@
 import pytest
 import boa
 
-def test_can_not_post_while_paused(limit_order_c, owner, abc, xyz):
+def test_can_not_post_while_paused(limit_order_c, abc, xyz):
     with boa.env.anchor():
         limit_order_c.pause(True)
         with boa.reverts("paused"):
@@ -33,8 +33,8 @@ def test_post_order_success(limit_order_c, abc, xyz, alice):
         assert len(limit_order_c.get_all_open_positions(alice)) == 1
         order = limit_order_c.get_all_open_positions(alice)[0]
         assert order[1] == alice
-        # assert order[2] == abc # how to get raw address of abc?
-        # assert order[3] == xyz # how to get raw address of xyz?
+        assert order[2] == abc.address
+        assert order[3] == xyz.address
         assert order[4] == 1
         assert order[5] == 2
         assert order[6] == boa.env.vm.patch.timestamp
