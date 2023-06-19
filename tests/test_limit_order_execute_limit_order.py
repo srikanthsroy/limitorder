@@ -133,6 +133,7 @@ def test_can_not_execute_swap_was_called(limit_order_c, abc, xyz, alice, uni_rou
         amount_out: uint256 = 2
         order = post_order(limit_order_c, alice, abc, xyz, amount_in, amount_out, boa.env.vm.patch.timestamp)
         uid = order[0]
+        # TODO: uncomment below lines and debug failures
         # limit_order_c.execute_limit_order(uid, [abc.address, xyz.address], [1], True)
         # assert uni_router.swap_was_called()
         # assert emitted(limit_order_c, "LimitOrderExecuted", uid, alice)
@@ -143,6 +144,7 @@ def test_can_not_execute_path_len_3_swap_was_called(limit_order_c, abc, xyz, ali
         amount_out: uint256 = 2
         order = post_order(limit_order_c, alice, abc, xyz, amount_in, amount_out, boa.env.vm.patch.timestamp)
         uid = order[0]
+        # TODO: uncomment below lines and debug failures
         # limit_order_c.execute_limit_order(uid, [abc.address, pytest.ZERO_ADDRESS, xyz.address], [1, 2], True)
         # assert uni_router.swap_was_called()
         # assert emitted(limit_order_c, "LimitOrderExecuted", uid, alice)
