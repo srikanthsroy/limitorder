@@ -108,8 +108,6 @@ def test_can_not_execute_insufficient_balance(limit_order_c, abc, xyz, alice):
         amount_in: uint256 = alice_balance + 1
         amount_out: uint256 = 2
         order = post_order(limit_order_c, alice, abc, xyz, amount_in, amount_out, boa.env.vm.patch.timestamp)
-        # with boa.env.prank(alice):
-        #     abc.approve(limit_order_c, 0)
         uid = order[0]
         limit_order_c.execute_limit_order(uid, [abc.address, xyz.address], [1], True)
         # TODO: uncomment the below line after boa is upgraded to the latest version/head which supports VyperContract.get_logs
